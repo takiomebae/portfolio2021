@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  db:
+    platform: linux/x86_64 # M1 Mac対応
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: mywordpress
+      MYSQL_DATABASE: portfolio # DB名
+      MYSQL_USER: mebae0221 # DBユーザー名
+      MYSQL_PASSWORD: 5d342025a6ff # DBパスワード
+
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:latest
+    volumes:
+      - ./wp:/var/www/html
+    ports:
+      - "8001:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: portfolio # DB名
+      WORDPRESS_DB_USER: mebae0221 # DBユーザー名
+      WORDPRESS_DB_PASSWORD: 5d342025a6ff # DBパスワード
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    volumes:
+      - ./phpmyadmin/phpmyadmin-misc.ini:/usr/local/etc/php/conf.d/phpmyadmin-misc.ini
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 8889:80
+
+volumes:
+  db_data:

@@ -1,0 +1,35 @@
+{
+  "name": "tiger-rack-corp",
+  "version": "1.0.0",
+  "description": "winでもmacでも開発環境を立ち上げられるように、vagrant上でdockerを起動させる。    \r ~~docker使用可能なOSなら、このリポジトリのみで開発環境の構築可能。~~  \r nginxでリバースプロキシを行っているため、単独で開発環境構築するためには、docker-compose.yml内でenvironmentの項目削除してport番号をふること。",
+  "main": "gulpfile.js",
+  "scripts": {
+    "watch": "gulp watch",
+    "build": "gulp",
+    "dev": "npm run watch && docker-compose up"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://tr-go@bitbucket.org/tr-go/tiger-rack-corp.git"
+  },
+  "author": "oodegoo",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/tr-go/tiger-rack-corp#readme",
+  "devDependencies": {
+    "autoprefixer": "^9.6.1",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-pug": "^4.0.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.2",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "stylelint": "^9.9.0",
+    "stylelint-config-recommended-scss": "^3.2.0",
+    "stylelint-scss": "^3.4.0"
+  }
+}
